@@ -10,7 +10,7 @@ namespace WebContratos.Models
     {
         
         public int Id { get; set; }
-        -
+       
         public int NumCont { get; set; }
         [Required]
         [StringLength(50)]
