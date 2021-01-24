@@ -30,7 +30,12 @@ namespace WebContratos.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NomeMutuario")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("NumCont")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

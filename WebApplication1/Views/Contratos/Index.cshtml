@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                Contrato
+                Número do Contrato
             </th>
             <th>
-                Nome do Mutuário
+               Nome do Mutuário
             </th>
             <th>
                 Data da Assinatura
             </th>
-            <th>Ações</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.NumCont)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeMutuario)

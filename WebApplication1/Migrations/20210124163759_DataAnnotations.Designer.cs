@@ -10,8 +10,8 @@ using WebContratos.Data;
 namespace WebContratos.Migrations
 {
     [DbContext(typeof(WebContratosContext))]
-    [Migration("20210123210241_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210124163759_DataAnnotations")]
+    partial class DataAnnotations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,12 @@ namespace WebContratos.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NomeMutuario")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("NumCont")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
