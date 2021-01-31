@@ -10,8 +10,8 @@ using WebContratos.Data;
 namespace WebContratos.Migrations
 {
     [DbContext(typeof(WebContratosContext))]
-    [Migration("20210124163759_DataAnnotations")]
-    partial class DataAnnotations
+    [Migration("20210131163406_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace WebContratos.Migrations
 
             modelBuilder.Entity("WebContratos.Models.Contrato", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ContratoID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -36,10 +36,7 @@ namespace WebContratos.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("NumCont")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("ContratoID");
 
                     b.ToTable("Contrato");
                 });

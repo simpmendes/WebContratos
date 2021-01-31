@@ -34,7 +34,7 @@ namespace WebContratos.Controllers
             }
 
             var contrato = await _context.Contrato
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ContratoID == id);
             if (contrato == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace WebContratos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NumCont,NomeMutuario,DataAssinatura")] Contrato contrato)
+        public async Task<IActionResult> Create([Bind("ContratoID,NomeMutuario,DataAssinatura")] Contrato contrato)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace WebContratos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NumCont,NomeMutuario,DataAssinatura")] Contrato contrato)
+        public async Task<IActionResult> Edit(int id, [Bind("ContratoID,NomeMutuario,DataAssinatura")] Contrato contrato)
         {
-            if (id != contrato.Id)
+            if (id != contrato.ContratoID)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace WebContratos.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContratoExists(contrato.Id))
+                    if (!ContratoExists(contrato.ContratoID))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace WebContratos.Controllers
             }
 
             var contrato = await _context.Contrato
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ContratoID == id);
             if (contrato == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace WebContratos.Controllers
 
         private bool ContratoExists(int id)
         {
-            return _context.Contrato.Any(e => e.Id == id);
+            return _context.Contrato.Any(e => e.ContratoID == id);
         }
     }
 }

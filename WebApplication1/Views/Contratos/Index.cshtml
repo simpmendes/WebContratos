@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                Número do Contrato
+                @Html.DisplayNameFor(model => model.ContratoID)
             </th>
             <th>
-               Nome do Mutuário
+                @Html.DisplayNameFor(model => model.NomeMutuario)
             </th>
             <th>
-                Data da Assinatura
+                @Html.DisplayNameFor(model => model.DataAssinatura)
             </th>
             <th></th>
         </tr>
@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.NumCont)
+                @Html.DisplayFor(modelItem => item.ContratoID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeMutuario)
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.DataAssinatura)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                <a asp-action="Edit" asp-route-id="@item.ContratoID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContratoID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContratoID">Delete</a>
             </td>
         </tr>
 }

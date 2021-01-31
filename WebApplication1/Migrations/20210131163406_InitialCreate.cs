@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebContratos.Migrations
 {
-    public partial class DataAnnotations : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,15 +11,14 @@ namespace WebContratos.Migrations
                 name: "Contrato",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ContratoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumCont = table.Column<int>(type: "int", nullable: false),
                     NomeMutuario = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DataAssinatura = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contrato", x => x.Id);
+                    table.PrimaryKey("PK_Contrato", x => x.ContratoID);
                 });
         }
 
