@@ -1,25 +1,32 @@
-﻿@model IEnumerable<WebContratos.Models.Contrato>
+﻿@model IEnumerable<WebContratos.Models.Listacontrato>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Contratos";
 }
-
-<h1>Index</h1>
+<script>
+    function formatContratoID(id) {
+        return id.toString().padStart(10, '0') 
+        
+    }
+    
+</script>
+<h1>Lista de Contratos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn-secondary">Criar Novo</a>
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
-        <tr>
+        <tr class="bg-secondary">
+            
             <th>
-                @Html.DisplayNameFor(model => model.ContratoID)
+               Número do Contrato
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomeMutuario)
+               Nome do Mutuário
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataAssinatura)
+               Data da Assinatura
             </th>
             <th></th>
         </tr>
@@ -28,7 +35,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ContratoID)
+                @Html.DisplayFor(modelItem => item.StrContratoId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeMutuario)
@@ -37,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.DataAssinatura)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ContratoID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ContratoID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ContratoID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ContratoID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ContratoID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContratoID">Deletar</a>
             </td>
         </tr>
 }

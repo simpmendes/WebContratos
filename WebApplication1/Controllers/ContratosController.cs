@@ -19,11 +19,27 @@ namespace WebContratos.Controllers
             _context = context;
         }
 
+        
         // GET: Contratos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Contrato.ToListAsync());
+            List<Listacontrato> NewListaContrato = new List<Listacontrato>();
+            var contratolist = await _context.Contrato.ToListAsync();
+            
+            foreach (var item in contratolist) 
+            {
+                NewListaContrato.Add(new Listacontrato(item.ContratoID, item.NomeMutuario, FormatarData(item.DataAssinatura), Alteraritem(item.ContratoID)));
+                
+            }
+            
+                
+
+
+
+            return View(NewListaContrato);
         }
+
+    
 
         // GET: Contratos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -149,5 +165,22 @@ namespace WebContratos.Controllers
         {
             return _context.Contrato.Any(e => e.ContratoID == id);
         }
+
+        public string Alteraritem(int id)
+        {
+            string fmt = "00000000000.##";
+
+            string alterada =id.ToString(fmt);
+
+            return alterada;
+        }
+
+        public string FormatarData(DateTime data)
+        {
+            string dataformatada= data.ToString("dd/MM/yyyy");
+            return dataformatada;
+        }
+
     }
 }
+
